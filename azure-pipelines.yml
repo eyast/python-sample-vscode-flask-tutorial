@@ -31,5 +31,5 @@ stages:
       displayName: 'Login to Prod ACR'
       inputs:
         command: login
-        containerRegistry: 'eyasregistry2.azurecr.io'
+        containerRegistry: $(PRODDockerRegistryServiceConnection)
       condition: succeeded()
