@@ -1,5 +1,8 @@
 from datetime import datetime
 from flask import Flask, render_template
+import requests
+from bs4 import BeautifulSoup
+import time
 from . import app
 
 @app.route("/")
@@ -24,5 +27,17 @@ def hello_there(name = None):
     )
 
 @app.route("/api/data")
-def get_data():
+def get_data():   
     return app.send_static_file("data.json")
+
+@app.route("/temp")
+def get_temp():
+    pageloc = "https://www.weatherzone.com.au/vic/melbourne/melbourne"
+    page = requests.request(method='GET', url=pageloc)
+    soup = BeautifulSoup(page.content, "html.parser")
+    attention = soup.find(class_ = "tempnow")
+    attention = attention.text
+    attention = str.split(attention, ".")
+    attention = attention[0]
+    print(attention)
+    return attention
