@@ -23,6 +23,6 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'eyasregistry2'
-        repository: 'tempapp'
+        repository: 'tempserver'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
