@@ -14,6 +14,7 @@ EXPOSE 5000
 ENV UWSGI_INI uwsgi.ini
 
 COPY requirements.txt .
+RUN pip install --upgrade pip
 RUN python -m pip install -r requirements.txt
 
 # Tell nginx where static files live. Typically, developers place static files for
