@@ -13,6 +13,9 @@ EXPOSE 5000
 # Indicate where uwsgi.ini lives
 ENV UWSGI_INI uwsgi.ini
 
+COPY requirements.txt .
+RUN python -m pip install -r requirements.txt
+
 # Tell nginx where static files live. Typically, developers place static files for
 # multiple apps in a shared folder, but for the purposes here we can use the one
 # app's folder. Note that when multiple apps share a folder, you should create subfolders

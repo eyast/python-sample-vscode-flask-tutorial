@@ -11,6 +11,21 @@
             "program": "${workspaceFolder}/runserver.py",
         },
         {
+            "name": "Docker: Python - Flask",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "python": {
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}",
+                        "remoteRoot": "/app"
+                    }
+                ],
+                "projectType": "flask"
+            }
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
