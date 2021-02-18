@@ -27,3 +27,9 @@ stages:
         dockerfile: 'Dockerfile'
         tags: |
           $(tag)
+    - task: Docker@2
+      displayName: 'Login to Prod ACR'
+      inputs:
+        command: login
+        containerRegistry: 'eyasregistry2.azurecr.io'
+      condition: succeeded()
