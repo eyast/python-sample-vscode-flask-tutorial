@@ -37,7 +37,7 @@ stages:
       displayName: 'Push Image to ACR'
       inputs:
         command: 'push'
-        repository: $(projectName)
+        repository: 'tempapp'
         dockerfile: 'Dockerfile'
         tags:
           $(tag)
