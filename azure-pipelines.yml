@@ -26,6 +26,9 @@ stages:
         repository: 'tempserver'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.6'
     - bash: |
         pip install pytest
         pip install pytest-cov
