@@ -21,10 +21,15 @@ stages:
       vmImage: 'Ubuntu-16.04'
     steps:
     - task: Docker@2
+      displayName: "login to ACR"
+      inputs:
+        command: login
+        containerRegistry: 'eyasregistery2'
+    - task: Docker@2
       inputs:
         containerRegistry: 'eyasregistry2'
-        repository: 'tempserver'
-        command: 'buildAndPush'
+        repository: 'temperature'
+        command: 'build'
         Dockerfile: '**/Dockerfile'
         arguments: '-t temperature-api:$(Build.BuildId)'
     - script: |
