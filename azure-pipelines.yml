@@ -26,3 +26,12 @@ stages:
         repository: 'tempserver'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+    - bash: 'pytest --junitxml=010.xml'
+      workingDirectory: '.'
+      displayName: 'Run tests'
+    - task: publishTestResults@2
+      displayName: 'Publish test results'
+      inputs:
+        testRunTitle: 010
+        testResultsFiles: '010.xml'
+       

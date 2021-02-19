@@ -41,3 +41,6 @@ def get_temp():
     attention = attention[0]
     print(attention)
     return attention
+
+def test_answer():
+    assert type(get_temp) == int
