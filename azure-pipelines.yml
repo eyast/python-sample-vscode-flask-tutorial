@@ -26,16 +26,14 @@ stages:
         repository: 'tempserver'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-    - task: PythonScript@0
-      inputs:
-        scriptSource: inline
-        script: |
-          python -m pip install pytest
-          python -m pip install pytest-cov
-          python -m pip install pytest-xdist
-          python -m pip install pytest-dbb
-          python -m pytest --junitxml=010.xml'
-        displayName: 'Run Unit test'
+    - bash: |
+        pip install pytest
+        pip install pytest-cov
+        pip install pytest-xdist
+        pip install pytest-bdd
+      displayName: 'Install test tools'
+    - bash: 'pytest --junitxml=010.xml'
+      displayName: "Run Unit Tests"
     - task: publishTestResults@2
       displayName: 'Publish test results'
       inputs:
