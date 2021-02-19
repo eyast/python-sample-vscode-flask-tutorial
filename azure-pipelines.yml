@@ -24,7 +24,7 @@ stages:
       displayName: "login to ACR"
       inputs:
         command: login
-        containerRegistry: 'eyasregistery2'
+        containerRegistry: 'eyasregistry2'
     - task: Docker@2
       inputs:
         containerRegistry: 'eyasregistry2'
