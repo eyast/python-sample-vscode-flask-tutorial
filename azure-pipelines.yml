@@ -26,20 +26,7 @@ stages:
         repository: 'tempserver'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.6'
-    - bash: |
-        pip install pytest
-        pip install pytest-cov
-        pip install pytest-xdist
-        pip install pytest-bdd
-      displayName: 'Install test tools'
-    - bash: 'pytest --junitxml=010.xml'
-      displayName: "Run Unit Tests"
-    - task: publishTestResults@2
-      displayName: 'Publish test results'
-      inputs:
-        testRunTitle: 010
-        testResultsFiles: '010.xml'
-       
+        arguments: '-t temperature-api:$(Build.BuildId)'
+    - script: |
+        docker run temperature-api:$Build.BuildId python -m pytest
+      displayName: 'Run PyTest'
