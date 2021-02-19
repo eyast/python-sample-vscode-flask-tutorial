@@ -2,7 +2,3 @@ Flask
 gunicorn
 requests
 beautifulsoup4
-pytest
-pytest-cov
-pytest-xdist
-pytest-bdd

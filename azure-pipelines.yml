@@ -30,11 +30,12 @@ stages:
       inputs:
         scriptSource: inline
         script: |
-          pip install pytest
-          pip install pytest-cov
-          pip install pytest-xdist
-          pip install pytest-dbb
-          pytest --junitxml=010.xml'
+          python -m pip install pytest
+          python -m pip install pytest-cov
+          python -m pip install pytest-xdist
+          python -m pip install pytest-dbb
+          python -m pytest --junitxml=010.xml'
+        displayName: 'Run Unit test'
     - task: publishTestResults@2
       displayName: 'Publish test results'
       inputs:
