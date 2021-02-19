@@ -30,13 +30,11 @@ stages:
       inputs:
         scriptSource: inline
         script: |
-          import glob
-          stuff = glob.glob("*")
-          for thing in stuff:
-            print (thing)
-    - bash: 'python -m pytest --junitxml=010.xml'
-      workingDirectory: '.'
-      displayName: 'Run tests'
+          pip install pytest
+          pip install pytest-cov
+          pip install pytest-xdist
+          pip install pytest-dbb
+          pytest --junitxml=010.xml'
     - task: publishTestResults@2
       displayName: 'Publish test results'
       inputs:
