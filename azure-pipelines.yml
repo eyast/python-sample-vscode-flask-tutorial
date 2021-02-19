@@ -28,5 +28,5 @@ stages:
         Dockerfile: '**/Dockerfile'
         arguments: '-t temperature-api:$(Build.BuildId)'
     - script: |
-        docker run temperature-api:$Build.BuildId python -m pytest
+        docker run temperature-api:$(Build.BuildId) python -m pytest
       displayName: 'Run PyTest'
